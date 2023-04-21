@@ -1,6 +1,7 @@
 {
   "extends": ["next/core-web-vitals", "plugin:sonarjs/recommended",
   "plugin:prettier/recommended"],
+  "plugins": ["unused-imports"],
   "rules": {
     "import/order": ["error", {
       "groups": [
@@ -11,6 +12,7 @@
       ],
       "newlines-between": "always"
     }],
+    "unused-imports/no-unused-imports": "error",
     "quotes": ["error", "single"],
     "prettier/prettier": ["error", {
       "printWidth": 120,
