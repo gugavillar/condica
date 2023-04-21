@@ -1,7 +1,7 @@
 import { Heading, Text } from '@chakra-ui/react'
-import { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 
-const TextFooter = () => {
+const TextFooter = memo(() => {
   return (
     <Fragment>
       <Text>Aperte a tecla:</Text>
@@ -19,6 +19,8 @@ const TextFooter = () => {
       </Heading>
     </Fragment>
   )
-}
+})
+
+TextFooter.displayName = 'TextFooter'
 
 export default TextFooter

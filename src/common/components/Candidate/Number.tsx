@@ -14,8 +14,14 @@ const Number = ({ setNumber }: NumberProps) => {
         placeholder=''
         onChange={(event) => setNumber(event)}
       >
-        <PinInputField />
-        <PinInputField />
+        <PinInputField
+          fontSize='2rem'
+          fontWeight='bold'
+        />
+        <PinInputField
+          fontSize='2rem'
+          fontWeight='bold'
+        />
       </PinInput>
     </HStack>
   )

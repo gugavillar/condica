@@ -1,4 +1,5 @@
 import { Heading, Box, Divider } from '@chakra-ui/react'
+
 import TextFooter from './TextFooter'
 
 type FooterProps = {
