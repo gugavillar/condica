@@ -2,6 +2,15 @@
   "extends": ["next/core-web-vitals", "plugin:sonarjs/recommended",
   "plugin:prettier/recommended"],
   "rules": {
+    "import/order": ["error", {
+      "groups": [
+        ["external", "builtin"],
+        "internal",
+        ["parent", "sibling"],
+        ["index", "object", "type"]
+      ],
+      "newlines-between": "always"
+    }],
     "quotes": ["error", "single"],
     "prettier/prettier": ["error", {
       "printWidth": 120,
