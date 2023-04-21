@@ -6,13 +6,16 @@ type NumberProps = {
 }
 
 const Number = ({ setNumber }: NumberProps) => {
+  const handleSetNumber = (value: string) => setNumber(value)
+
   return (
     <HStack>
       <Heading fontSize='2xl'>Número:</Heading>
       <PinInput
         size='lg'
         placeholder=''
-        onChange={(event) => setNumber(event)}
+        onChange={handleSetNumber}
+        autoFocus
       >
         <PinInputField
           fontSize='2rem'
