@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react'
-import Candidate from '@/common/components/Candidate'
+
+import { Candidate } from '@/common/components'
 
 const Voting = () => {
   return (
