@@ -1,12 +1,17 @@
 import { HStack, Heading, PinInput, PinInputField } from '@chakra-ui/react'
-import { Dispatch, SetStateAction } from 'react'
+import { useState } from 'react'
 
 type NumberProps = {
-  setNumber: Dispatch<SetStateAction<string>>
+  handleCandidateDataAPI: (numbers: string) => Promise<void>
 }
 
-const Number = ({ setNumber }: NumberProps) => {
-  const handleSetNumber = (value: string) => setNumber(value)
+const Number = ({ handleCandidateDataAPI }: NumberProps) => {
+  const [numbers, setNumbers] = useState('')
+
+  const handleSetNumber = async (value: string) => {
+    setNumbers(value)
+    if (value?.length === 2) return await handleCandidateDataAPI(value)
+  }
 
   return (
     <HStack>
@@ -16,6 +21,7 @@ const Number = ({ setNumber }: NumberProps) => {
         placeholder=''
         onChange={handleSetNumber}
         autoFocus
+        value={numbers}
       >
         <PinInputField
           fontSize='2rem'

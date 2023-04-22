@@ -1,6 +1,6 @@
 import { Flex, Heading, Image, ImageProps } from '@chakra-ui/react'
 
-import IfComponent from '../IfComponent'
+import { IfComponent } from '@/common/components'
 
 type PhotoProps = {
   photo: ImageProps | undefined
