@@ -15,6 +15,8 @@ type CandidateProps = {
 }
 
 const Candidate = ({ candidateData, isLoading, handleCandidateDataAPI }: CandidateProps) => {
+  const hasCandidateAndIsInvalid = !!candidateData && !candidateData?.isValid
+
   return (
     <>
       <VStack
@@ -30,7 +32,7 @@ const Candidate = ({ candidateData, isLoading, handleCandidateDataAPI }: Candida
         />
       </VStack>
       <IfComponent
-        condition={!candidateData?.isValid}
+        condition={hasCandidateAndIsInvalid}
         component={<NullVote />}
       />
       <IfComponent
