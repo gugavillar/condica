@@ -1,54 +1,40 @@
 import { VStack } from '@chakra-ui/react'
+
+import { IfComponent, Footer } from '@/common/components'
+import { Candidate } from '@/@types/candidate'
+
 import Photo from './Photo'
 import Number from './Number'
 import Name from './Name'
-import { useEffect, useState } from 'react'
-import Footer from '../Footer'
-import IfComponent from '../IfComponent'
+import NullVote from './NullVote'
 
-const getCandidate = {
-  name: 'Gustavo Villar',
-  photo: {
-    src: 'https://bit.ly/dan-abramov',
-    alt: 'Dan'
-  }
+type CandidateProps = {
+  candidateData: Candidate | undefined
+  isLoading: boolean
+  handleCandidateDataAPI: (numbers: string) => Promise<void>
 }
 
-const Candidate = () => {
-  const [numbers, setNumbers] = useState('')
-  const [candidate, setCandidate] = useState<typeof getCandidate | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    let timer: any
-    if (numbers?.length === 2) {
-      setIsLoading(true)
-      setCandidate(getCandidate)
-      timer = setTimeout(() => {
-        setIsLoading(false)
-      }, 800)
-    } else {
-      setCandidate(null)
-    }
-    return () => clearTimeout(timer)
-  }, [numbers?.length])
-
+const Candidate = ({ candidateData, isLoading, handleCandidateDataAPI }: CandidateProps) => {
   return (
     <>
       <VStack
         spacing={10}
         align='flex-start'
-        mb={16}
+        {...(!!candidateData?.name && { mb: 16 })}
       >
-        <Photo photo={candidate?.photo} />
-        <Number setNumber={setNumbers} />
+        <Photo photo={candidateData?.photo} />
+        <Number handleCandidateDataAPI={handleCandidateDataAPI} />
         <IfComponent
-          condition={!!candidate}
-          component={<Name name={candidate?.name} />}
+          condition={!!candidateData?.name}
+          component={<Name name={candidateData?.name} />}
         />
       </VStack>
       <IfComponent
-        condition={!!candidate}
+        condition={!candidateData?.isValid}
+        component={<NullVote />}
+      />
+      <IfComponent
+        condition={!!candidateData}
         component={<Footer isLoading={isLoading} />}
       />
     </>

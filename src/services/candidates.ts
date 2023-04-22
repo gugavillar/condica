@@ -1,21 +1,10 @@
+import { Candidate } from '@/@types/candidate'
 import { api } from '@/providers/axios'
 
 type candidateParams = {
-  number: string
+  numbers: string
 }
 
-type candidateResponse = Promise<
-  | {
-      number: number
-      name: string
-      photo: {
-        src: string
-        alt: string
-      }
-    }
-  | {
-      voto: string
-    }
->
+type candidateResponse = Promise<Candidate>
 
-export const candidate = (data: candidateParams): candidateResponse => api.post('/candidates', data)
+export const getCandidateDataAPI = (data: candidateParams): candidateResponse => api.post('/getCandidateData', data)
