@@ -6,7 +6,7 @@ import RegistrationInput from './RegistrationInput'
 import RegistrationLoader from './RegistrationLoader'
 
 type VoterRegistrationProps = {
-  handleValidateRegistrationAPI: (registration: string) => Promise<boolean | undefined>
+  handleValidateRegistrationAPI: (registration: string) => Promise<boolean | void>
   isLoading: boolean
 }
 
